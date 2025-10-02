@@ -2,60 +2,49 @@
 @tailwind components;
 @tailwind utilities;
 
-/* shadcn/ui theme tokens */
+/* ===== Brand tokens ===== */
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 47.4% 11.2%;
+    /* === Brand === */
+    --primary: #1E3A8A;
+    --primary-foreground: #FFFFFF;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 47.4% 11.2%;
+    /* === Neutrals / surfaces === */
+    --background: #FFFFFF;
+    --foreground: #000000;
+    --card: #FFFFFF;
+    --card-foreground: #000000;
+    --popover: #FFFFFF;
+    --popover-foreground: #000000;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 47.4% 11.2%;
+    /* === Support / surfaces === */
+    --muted: #F3F4F6;           /* light gray */
+    --muted-foreground: #64748B;/* slate-500 */
+    --accent: #F8FAFC;
+    --accent-foreground: #364153;
 
-    --primary: 221.2 83.2% 53.3%;
-    --primary-foreground: 210 40% 98%;
+    /* === Secondary & borders === */
+    --secondary: #E2E8F0;             /* slate-200 */
+    --secondary-foreground: #1E3A8A;
+    --border: #E2E8F0;
+    --input: #E2E8F0;
+    --ring: #1E3A8A;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* === Status === */
+    --destructive: #C10007;     /* red */
+    --destructive-foreground: #FFFFFF;
+    --success: #008236;         /* green */
+    --warning: #A65F00;         /* amber/brown */
+    --info: #1447E6;            /* blue */
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 221.2 83.2% 53.3%;
+    /* === Extra tints (these are the ones for your swatches) === */
+    --blue-100:   #DBEAFE;
+    --green-100:  #DCFCE7;      /* light green tint from your list */
+    --rose-100:   #FFE2E2;      /* light rose tint */
+    --amber-100:  #FFEDD4;
+    --yellow-100: #FEF9C2;
 
     --radius: 12px;
-  }
-
-  .dark {
-    --background: 224 71% 4%;
-    --foreground: 213 31% 91%;
-    --card: 224 71% 4%;
-    --card-foreground: 213 31% 91%;
-    --popover: 224 71% 4%;
-    --popover-foreground: 213 31% 91%;
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-    --secondary: 222.2 47.4% 11.2%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 223 47% 11%;
-    --muted-foreground: 215.4 16.3% 56.9%;
-    --accent: 223 47% 11%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 63% 31%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 223 47% 11%;
-    --input: 223 47% 11%;
-    --ring: 215 20.2% 65.1%;
   }
 }
 
