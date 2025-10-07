@@ -13,3 +13,6 @@ export function CardTitle(props: React.HTMLAttributes<HTMLHeadingElement>) {
 export function CardContent(props: React.HTMLAttributes<HTMLDivElement>) {
   return <div {...props} className={twMerge("p-6 pt-4", props.className)} />;
 }
+export function CardDescription(props: React.HTMLAttributes<HTMLParagraphElement>) {
+  return <p {...props} className={twMerge("text-sm text-muted-foreground", props.className)} />;
+}
