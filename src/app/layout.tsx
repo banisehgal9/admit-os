@@ -2,7 +2,7 @@ import "./globals.css";
 
 export const metadata = {
   title: "Admit OS",
-  description: "Your grad-application copilot",
+  description: "Grad app copilot",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
