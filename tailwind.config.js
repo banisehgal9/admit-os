@@ -2,19 +2,43 @@
 module.exports = {
   darkMode: ["class"],
   content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/**/*.{ts,tsx,js,jsx,mdx}",
+    "./src/components/**/*.{ts,tsx,js,jsx,mdx}",
+    "./src/pages/**/*.{ts,tsx,js,jsx,mdx}",
   ],
   theme: {
     extend: {
       colors: {
-        brand: { bg: "#0B0B0B", fg: "#FFFFFF", muted: "#F5F5F5", line: "#EAEAEA", accent: "#111111" },
+        border: "var(--border)",
+        input: "var(--input)",
+        ring: "var(--ring)",
+        background: "var(--background)",
+        foreground: "var(--foreground)",
+        primary: { DEFAULT: "var(--primary)", foreground: "var(--primary-foreground)" },
+        secondary: { DEFAULT: "var(--secondary)", foreground: "var(--secondary-foreground)" },
+        destructive: { DEFAULT: "var(--destructive)", foreground: "var(--destructive-foreground)" },
+        muted: { DEFAULT: "var(--muted)", foreground: "var(--muted-foreground)" },
+        accent: { DEFAULT: "var(--accent)", foreground: "var(--accent-foreground)" },
+        popover: { DEFAULT: "var(--popover)", foreground: "var(--popover-foreground)" },
+        card: { DEFAULT: "var(--card)", foreground: "var(--card-foreground)" },
       },
-      fontFamily: { sans: ["Inter", "sans-serif"] },
-      boxShadow: { soft: "0 6px 24px rgba(0,0,0,0.06)" },
-      borderRadius: { xl2: "1rem" },
+      borderRadius: {
+        lg: "0.5rem",
+        md: "0.375rem",
+        xl: "0.75rem",
+      },
+      boxShadow: {
+        sm: "var(--shadow-sm)",
+        DEFAULT: "var(--shadow)",
+        md: "var(--shadow-md)",
+        lg: "var(--shadow-lg)",
+        xl: "var(--shadow-xl)",
+      },
+      fontFamily: {
+        sans: ["Inter", "ui-sans-serif", "system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "Noto Sans", "sans-serif"],
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],
 }
+
