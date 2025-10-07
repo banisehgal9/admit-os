@@ -1,0 +1,16 @@
+components/**
+src/App.tsx
+src/components/AIChat.tsx
+src/components/CritiqueModal.tsx
+src/components/CritiquePage.tsx
+src/components/DeadlineCheck.tsx
+src/components/EssayEditor.tsx
+src/components/LoginPage.tsx
+src/components/NewApplicationModal.tsx
+src/components/OnboardingFlow.tsx
+src/components/ProfilePage.tsx
+src/components/ProgramCard.tsx
+src/components/ReferenceRequest.tsx
+src/components/ReferenceSelection.tsx
+src/components/SchoolSelection.tsx
+src/components/figma/**
