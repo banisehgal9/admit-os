@@ -30,11 +30,14 @@ export function Dashboard({
   onDeleteProgram,
 }: DashboardProps) {
   const [isNewApplicationModalOpen, setIsNewApplicationModalOpen] = useState(false)
+
   const stats = {
     totalPrograms: programs.length,
-    inProgress: programs.filter(p => p.status === "in-progress").length,
-    submitted: programs.filter(p => p.status === "submitted").length,
-    avgProgress: programs.length ? Math.round(programs.reduce((acc, p) => acc + p.progress, 0) / programs.length) : 0,
+    inProgress: programs.filter((p) => p.status === "in-progress").length,
+    submitted: programs.filter((p) => p.status === "submitted").length,
+    avgProgress: programs.length
+      ? Math.round(programs.reduce((acc, p) => acc + p.progress, 0) / programs.length)
+      : 0,
   }
 
   return (
@@ -42,12 +45,15 @@ export function Dashboard({
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold">Application Dashboard</h1>
-          <p className="text-neutral-500">
+          <h1 className="text-3xl font-bold tracking-tight">Application Dashboard</h1>
+          <p className="mt-1 text-sm text-neutral-500">
             Track and manage your graduate school applications
           </p>
         </div>
-        <Button onClick={() => setIsNewApplicationModalOpen(true)} className="flex items-center gap-2">
+        <Button
+          onClick={() => setIsNewApplicationModalOpen(true)}
+          className="flex items-center gap-2 rounded-2xl px-4 py-2"
+        >
           <Plus className="h-4 w-4" />
           Start New Application
         </Button>
@@ -55,49 +61,49 @@ export function Dashboard({
 
       {/* Stats Cards */}
       <div className="grid grid-cols-1 gap-6 md:grid-cols-4">
-        <Card className="border-0 shadow-sm">
+        <Card className="rounded-2xl border border-neutral-200 bg-white shadow-sm">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Total Programs</CardTitle>
+            <CardTitle className="text-sm font-medium text-neutral-600">Total Programs</CardTitle>
             <BookOpen className="h-4 w-4 text-neutral-400" />
           </CardHeader>
-          <CardContent><div className="text-2xl font-bold">{stats.totalPrograms}</div></CardContent>
+          <CardContent><div className="text-2xl font-semibold">{stats.totalPrograms}</div></CardContent>
         </Card>
 
-        <Card className="border-0 shadow-sm">
+        <Card className="rounded-2xl border border-neutral-200 bg-white shadow-sm">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">In Progress</CardTitle>
+            <CardTitle className="text-sm font-medium text-neutral-600">In Progress</CardTitle>
             <Target className="h-4 w-4 text-neutral-400" />
           </CardHeader>
-          <CardContent><div className="text-2xl font-bold">{stats.inProgress}</div></CardContent>
+          <CardContent><div className="text-2xl font-semibold">{stats.inProgress}</div></CardContent>
         </Card>
 
-        <Card className="border-0 shadow-sm">
+        <Card className="rounded-2xl border border-neutral-200 bg-white shadow-sm">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Submitted</CardTitle>
+            <CardTitle className="text-sm font-medium text-neutral-600">Submitted</CardTitle>
             <Users className="h-4 w-4 text-neutral-400" />
           </CardHeader>
-          <CardContent><div className="text-2xl font-bold">{stats.submitted}</div></CardContent>
+          <CardContent><div className="text-2xl font-semibold">{stats.submitted}</div></CardContent>
         </Card>
 
-        <Card className="border-0 shadow-sm">
+        <Card className="rounded-2xl border border-neutral-200 bg-white shadow-sm">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Avg Progress</CardTitle>
+            <CardTitle className="text-sm font-medium text-neutral-600">Avg Progress</CardTitle>
             <TrendingUp className="h-4 w-4 text-neutral-400" />
           </CardHeader>
-          <CardContent><div className="text-2xl font-bold">{stats.avgProgress}%</div></CardContent>
+          <CardContent><div className="text-2xl font-semibold">{stats.avgProgress}%</div></CardContent>
         </Card>
       </div>
 
       {/* Program Grid */}
       <div>
-        <h2 className="mb-6 text-xl font-semibold">Your Programs</h2>
+        <h2 className="mb-3 text-xl font-semibold">Your Programs</h2>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {programs.map((program) => (
             <ProgramCard
               key={program.id}
               program={program}
               onClick={() => onProgramClick(program.id)}
-              onStatusChange={(_, status) => onStatusChange(program.id, status)}
+              onStatusChange={onStatusChange}
               onDelete={onDeleteProgram}
             />
           ))}
@@ -105,31 +111,49 @@ export function Dashboard({
       </div>
 
       {/* Quick Actions */}
-      <Card className="border-0 shadow-sm">
+      <Card className="rounded-2xl border border-neutral-200 bg-white shadow-sm">
         <CardHeader>
-          <CardTitle>Quick Actions</CardTitle>
-          <CardDescription>Common tasks to help you stay on track</CardDescription>
+          <CardTitle className="text-base">Quick Actions</CardTitle>
+          <CardDescription className="text-neutral-500">
+            Common tasks to help you stay on track
+          </CardDescription>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
-            <Button variant="outline" className="h-auto flex-col items-center gap-2 p-4" onClick={() => onQuickAction("essays")}>
+            <Button
+              variant="outline"
+              className="h-auto flex-col items-center gap-2 rounded-xl border-neutral-300 p-4 hover:bg-neutral-900 hover:text-white"
+              onClick={() => onQuickAction("essays")}
+            >
               <BookOpen className="h-5 w-5" />
-              <span className="text-sm">Edit Essays</span>
+              <span className="text-sm font-medium">Edit Essays</span>
               <span className="text-xs text-neutral-500">Work on personal statements</span>
             </Button>
-            <Button variant="outline" className="h-auto flex-col items-center gap-2 p-4" onClick={() => onQuickAction("references")}>
+            <Button
+              variant="outline"
+              className="h-auto flex-col items-center gap-2 rounded-xl border-neutral-300 p-4 hover:bg-neutral-900 hover:text-white"
+              onClick={() => onQuickAction("references")}
+            >
               <Users className="h-5 w-5" />
-              <span className="text-sm">Edit References</span>
+              <span className="text-sm font-medium">Edit References</span>
               <span className="text-xs text-neutral-500">Review recommendation letters</span>
             </Button>
-            <Button variant="outline" className="h-auto flex-col items-center gap-2 p-4" onClick={() => onQuickAction("reference-request")}>
+            <Button
+              variant="outline"
+              className="h-auto flex-col items-center gap-2 rounded-xl border-neutral-300 p-4 hover:bg-neutral-900 hover:text-white"
+              onClick={() => onQuickAction("reference-request")}
+            >
               <Users className="h-5 w-5" />
-              <span className="text-sm">Request References</span>
+              <span className="text-sm font-medium">Request References</span>
               <span className="text-xs text-neutral-500">Follow up with recommenders</span>
             </Button>
-            <Button variant="outline" className="h-auto flex-col items-center gap-3 p-6" onClick={() => onQuickAction("deadlines")}>
+            <Button
+              variant="outline"
+              className="h-auto flex-col items-center gap-3 rounded-xl border-neutral-300 p-6 hover:bg-neutral-900 hover:text-white"
+              onClick={() => onQuickAction("deadlines")}
+            >
               <Target className="h-6 w-6" />
-              <span>Check Deadlines</span>
+              <span className="text-sm font-medium">Check Deadlines</span>
               <span className="text-xs text-neutral-500">Review upcoming due dates</span>
             </Button>
           </div>

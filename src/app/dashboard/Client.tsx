@@ -1,5 +1,5 @@
 "use client"
-
+import { logoutAction } from "@/app/logout/actions"
 import { useState } from "react"
 import { Dashboard } from "@/components/dashboard/Dashboard"
 import type { Program } from "@/components/ProgramCard"
@@ -37,15 +37,30 @@ export default function DashboardClient() {
   }
 
   return (
-    <div className="mx-auto max-w-6xl px-6 py-8">
-      <Dashboard
-        programs={programs}
-        onProgramClick={handleProgramClick}
-        onQuickAction={handleQuickAction}
-        onCreateApplication={handleCreateApplication}
-        onStatusChange={handleStatusChange}
-        onDeleteProgram={handleDeleteProgram}
-      />
-    </div>
-  )
+  <div className="mx-auto max-w-6xl px-6 py-8">
+    <header className="mb-6 flex items-center justify-between">
+      <div>
+        <h1 className="text-2xl font-semibold tracking-tight">Dashboard</h1>
+        <p className="text-sm text-neutral-500">Signed in</p>
+      </div>
+      <form action={logoutAction}>
+        <button
+          type="submit"
+          className="inline-flex h-9 items-center rounded-md border border-neutral-300 bg-white px-3 text-sm hover:bg-neutral-50"
+        >
+          Log out
+        </button>
+      </form>
+    </header>
+
+    <Dashboard
+      programs={programs}
+      onProgramClick={handleProgramClick}
+      onQuickAction={handleQuickAction}
+      onCreateApplication={handleCreateApplication}
+      onStatusChange={handleStatusChange}
+      onDeleteProgram={handleDeleteProgram}
+    />
+  </div>
+)
 }

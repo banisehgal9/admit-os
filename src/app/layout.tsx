@@ -1,14 +1,24 @@
-import "./globals.css";
+import type { Metadata } from "next"
+import { Inter } from "next/font/google"
+import "./globals.css"
 
-export const metadata = {
+const inter = Inter({ subsets: ["latin"] })
+
+export const metadata: Metadata = {
   title: "Admit OS",
-  description: "Grad app copilot",
-};
+  description: "Track and manage your graduate school applications",
+}
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className={`${inter.className} min-h-screen bg-neutral-50 text-neutral-900`}>
+        {children}
+      </body>
     </html>
-  );
+  )
 }
